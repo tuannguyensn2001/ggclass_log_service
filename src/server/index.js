@@ -7,13 +7,13 @@ const express = require("express");
 const router = require("../routes")
 const provider = require("../providers/providers");
 
-function main(){
+function main() {
     const server = wrapServerWithReflection.default(new grpc.Server());
     mongoose.connect(config.database.mongo.url)
         .catch(err => console.log(err))
-    server.addService(logsAssignment.service,logsAssignment.handler)
+    server.addService(logsAssignment.service, logsAssignment.handler)
 
-    server.bindAsync(`0.0.0.0:${config.grpcServer}`, grpc.ServerCredentials.createInsecure(), () => {
+    server.bindAsync(`0.0.0.0:50051`, grpc.ServerCredentials.createInsecure(), () => {
         server.start();
     });
 
@@ -23,7 +23,7 @@ function main(){
 
     app.use(express.urlencoded({extend: true}))
     app.use(express.json())
-    app.use("/api",router)
+    app.use("/api", router)
 
     app.listen(4000)
 
