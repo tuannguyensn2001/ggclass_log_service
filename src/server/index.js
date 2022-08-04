@@ -13,7 +13,7 @@ function main(){
         .catch(err => console.log(err))
     server.addService(logsAssignment.service,logsAssignment.handler)
 
-    server.bindAsync(config.grpcServer, grpc.ServerCredentials.createInsecure(), () => {
+    server.bindAsync(`0.0.0.0:${config.grpcServer}`, grpc.ServerCredentials.createInsecure(), () => {
         server.start();
     });
 
