@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const config = require("../config/index");
 const express = require("express");
 const router = require("../routes")
+const provider = require("../providers/providers");
 
 function main(){
     const server = wrapServerWithReflection.default(new grpc.Server());
@@ -14,6 +15,8 @@ function main(){
     server.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), () => {
         server.start();
     });
+
+    provider();
 
     const app = express();
 
