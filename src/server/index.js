@@ -17,11 +17,11 @@ function main(){
 
     const app = express();
 
-    // app.use(express.urlencoded({extend: true}))
-    // app.use(express.json())
-    // app.use("/api",router)
-    //
-    // app.listen(4000)
+    app.use(express.urlencoded({extend: true}))
+    app.use(express.json())
+    app.use("/api",router)
+
+    app.listen(4000)
 
 
 }
