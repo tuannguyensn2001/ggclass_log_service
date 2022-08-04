@@ -12,7 +12,8 @@ function main(){
     mongoose.connect(config.database.mongo.url)
         .catch(err => console.log(err))
     server.addService(logsAssignment.service,logsAssignment.handler)
-    server.bindAsync('localhost:50051', grpc.ServerCredentials.createInsecure(), () => {
+
+    server.bindAsync(config.grpcServer, grpc.ServerCredentials.createInsecure(), () => {
         server.start();
     });
 

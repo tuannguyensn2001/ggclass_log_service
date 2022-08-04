@@ -9,5 +9,6 @@ module.exports = {
     },
     rabbit: {
         url: process.env.RABBIT_URL
-    }
+    },
+    grpcServer: process.env.GRPC_SERVER
 }
